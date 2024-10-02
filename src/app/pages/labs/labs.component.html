@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Mi primera pagina web</h1>
+    <h2>Bienvenido a {{title}}</h2>
+    <hr>
+    <h2>{{'Hola '.repeat(4)}}</h2>
+    <p>La suma de 3 + 3 = {{3 + 3}}</p>
+    <p>Hola soy {{name()}} y tengo {{edad}} años</p>
+    <hr>
+    <!-- Property Bindings -->
+    <input type="text" [value]="name()">
+    <button [disabled]="disabled">Click Me</button><br><br>
+    <img [src]="person.img" alt=""> 
+    <hr>
+    <h2>Objetos</h2>
+    <p>Person: {{person.name}}</p>
+    <p>Age: {{person.age}}</p>
+    <hr>
+    <!-- Event Binding -->
+    <h3>Event Binding</h3>
+    <button (click)="onClick()">Click Me</button>
+    <button (dblclick)="onClick()">Click Me</button>
+    <hr>
+    <!-- Change -->
+    <h3>Change</h3>
+    <input type="text" (change)="changeHandler($event)">
+    <hr>
+    <!-- KeyDown -->
+    <h3>KeyDown</h3>
+    <input type="text" [value]="person.name" (keydown)="keydonwHandler($event)">
+    <hr>
+    <!-- Signals -->
+
+    <p>Total: {{tasks().length}}</p>
+    <ul>
+        @for (task of tasks(); track $index) {
+            <li>Task {{$index + 1}}: {{task}}</li>
+        }
+    </ul>
+
+    <h3>Signals</h3>
+    <input type="text" [value]="name()" (keydown.tab)="keydonwHandler($event)">
+    <p>Name: {{name()}}</p>
+</div>
