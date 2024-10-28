@@ -1,3 +1,11 @@
 .container{
     padding: 3rem;
 }
+
+.message-err{
+    margin-top: 1rem;
+    background-color: red;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}

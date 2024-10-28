@@ -4,10 +4,10 @@
     <hr>
     <h2>{{'Hola '.repeat(4)}}</h2>
     <p>La suma de 3 + 3 = {{3 + 3}}</p>
-    <p>Hola soy {{name()}} y tengo {{edad}} años</p>
+    <p>Hola soy {{person.name}} y tengo {{edad}} años</p>
     <hr>
     <!-- Property Bindings -->
-    <input type="text" [value]="name()">
+    <input type="text" [value]="person.name">
     <button [disabled]="disabled">Click Me</button><br><br>
     <img [src]="person.img" alt=""> 
     <hr>
@@ -38,6 +38,40 @@
     </ul>
 
     <h3>Signals</h3>
-    <input type="text" [value]="name()" (keydown.tab)="keydonwHandler($event)">
-    <p>Name: {{name()}}</p>
+    <input type="text" [value]="person.name" (keydown.enter)="keydonwHandler($event)">
+    <p>Name: {{person.name}}</p>
+
+    <input type="text" [value]="person.age" (keydown.enter)="changeAge($event)">
+    <p>age: {{person.age}}</p>
+
+    <!-- IF -->
+    <h3>IF</h3>
+    @if (person.name == "Adrian") {
+        <p>Mostrar</p>
+    }
+    @if (person.age >= 18) {
+        <p>Es mayor de edad</p>
+    } @else {
+        <p>Es menor de edad</p>
+    }
+
+    @switch(person.name) {
+        @case("Adrian") {
+            <p>Adrian</p>
+        }
+        @case("Juan") {
+            <p>Juan</p>
+        }
+        @default {
+            <p>Default</p>
+        }
+    }
+    <hr>
+    <input type="color" [formControl]="colorCtrl">
+    <p>Color: {{colorCtrl.value}}</p>
+    <hr>
+    <input type="text" [formControl]="nameCtrl"><br><br>
+    @if(nameCtrl.invalid && nameCtrl.touched) {
+        <span class="message-err">Nombre invalido</span>
+    }
 </div>
